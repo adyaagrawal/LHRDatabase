@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ground text-ink font-sans antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid #f0b27a;
+    outline-offset: 2px;
+  }
+  /* Tables never scroll the page sideways; their card does. */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .page-title {
+    @apply font-display text-4xl font-bold uppercase leading-none tracking-wide md:text-5xl;
+  }
+  .section-title {
+    @apply font-display text-2xl font-bold uppercase leading-tight tracking-wide;
+  }
+  .card {
+    @apply rounded-lg border border-line bg-surface;
+  }
+  .btn {
+    @apply inline-flex min-h-touch items-center justify-center gap-2 rounded-md border px-4 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn border-accent bg-accent text-white hover:bg-accent-ink;
+  }
+  .btn-secondary {
+    @apply btn border-line bg-surface text-ink hover:bg-ground;
+  }
+  .btn-danger {
+    @apply btn border-chip-rejectedFg bg-surface text-chip-rejectedFg hover:bg-chip-rejectedBg;
+  }
+  .btn-ghost {
+    @apply btn border-transparent bg-transparent text-ink hover:bg-line2;
+  }
+  .field-label {
+    @apply mb-1 block text-sm font-semibold text-ink;
+  }
+  .field-help {
+    @apply mt-1 text-sm text-muted;
+  }
+  .field-error {
+    @apply mt-1 text-sm font-medium text-chip-rejectedFg;
+  }
+  .input {
+    @apply block min-h-touch w-full rounded-md border border-line bg-surface px-3 py-2 text-base text-ink placeholder:text-muted/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 disabled:bg-ground;
+  }
+  .input-error {
+    @apply border-chip-rejectedFg;
+  }
+  .chip-option {
+    @apply inline-flex min-h-touch cursor-pointer items-center rounded-md border border-line bg-surface px-3 text-sm font-medium text-ink hover:border-ink;
+  }
+  .chip-option[aria-checked="true"],
+  .chip-option[aria-pressed="true"] {
+    @apply border-ink bg-ink text-white;
+  }
+  .table-wrap {
+    @apply overflow-x-auto rounded-lg border border-line bg-surface;
+  }
+  .data-table {
+    @apply w-full border-collapse text-sm;
+  }
+  .data-table th {
+    @apply whitespace-nowrap border-b border-line bg-[#F7F5F1] px-3 py-2.5 text-left font-semibold text-ink;
+  }
+  .data-table td {
+    @apply border-b border-line2 px-3 py-2 align-top;
+  }
+  .data-table tr:last-child td {
+    @apply border-b-0;
+  }
+  .mono {
+    @apply font-mono text-[13px];
+  }
+}
